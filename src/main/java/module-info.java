@@ -7,6 +7,11 @@ module ict.skills.ictskillslogin {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
+    requires mysql.connector.j;
+    requires static lombok;
+    requires org.hibernate.orm.core;
+    requires jakarta.persistence;
+
     opens ict.skills.ictskillslogin to javafx.fxml;
     exports ict.skills.ictskillslogin;
 }
