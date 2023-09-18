@@ -51,7 +51,9 @@ public class MainMenuViewController implements Initializable {
     private TextField editName;
     @FXML
     private TextField editPrice;
-    private Boolean saveable = false;
+    @FXML
+    private Label editErrorLabel;
+    private Boolean itemSelected = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -114,17 +116,20 @@ public class MainMenuViewController implements Initializable {
         editNumber.setText(selectedItem.getCount().toString());
         editName.setText(selectedItem.getName());
         editPrice.setText(selectedItem.getPrice().toString());
-        saveable = true;
+        itemSelected = true;
+        setEditErrorMessage(null);
     }
     private void clearCurrentEdit(){
         editNumber.setText("Stk.");
         editName.setText("Namen");
         editPrice.setText("Preis");
-        saveable = false;
+        itemSelected = false;
+
     }
     @FXML
     protected void editSaveChanges(ActionEvent event) {
-        if (!saveable){
+        if (!itemSelected){
+            setEditErrorMessage("Error: No Item Selected");
             return;
         }
         order.get(index.getValue()).setName(editName.getText());
@@ -140,4 +145,13 @@ public class MainMenuViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    private void setEditErrorMessage(String message) {
+        if (message == null){
+            editErrorLabel.setVisible(false);
+            return;
+        }
+        editErrorLabel.setVisible(true);
+        editErrorLabel.setText(message);
+    }
+
 }

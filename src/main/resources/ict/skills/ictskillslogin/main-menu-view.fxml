@@ -71,7 +71,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="58.0" layoutY="217.0" prefHeight="200.0" prefWidth="208.0">
+      <AnchorPane layoutX="58.0" layoutY="217.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="178.0" prefWidth="208.0">
          <children>
             <BorderPane prefHeight="200.0" prefWidth="208.0">
                <top>
@@ -94,17 +94,29 @@
                   <TextField prefHeight="26.0" prefWidth="47.0" promptText="Preis" BorderPane.alignment="CENTER" fx:id="editPrice"/>
                </right>
                <bottom>
-                  <Button mnemonicParsing="false" text="Speichern" BorderPane.alignment="CENTER" onAction="#editSaveChanges">
+                  <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets bottom="20.0" />
                      </BorderPane.margin>
-                     <graphic>
-                        <MaterialIconView glyphName="BORDER_COLOR" size="20" />
-                     </graphic>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="218.0" text="Error" fx:id="editErrorLabel">
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </Label>
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Speichern" onAction="#editSaveChanges">
+                           <graphic>
+                              <MaterialIconView glyphName="BORDER_COLOR" size="20" />
+                           </graphic>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
                </bottom>
             </BorderPane>
          </children>
