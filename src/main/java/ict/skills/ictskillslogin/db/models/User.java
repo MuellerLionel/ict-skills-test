@@ -30,4 +30,7 @@ public class User {
         this.username = username;
         this.passwordHash = passwordHash;
     }
+    public Long getId(){
+        return this.id;
+    }
 }

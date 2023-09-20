@@ -27,5 +27,6 @@
             true
         </property>
         <mapping class="ch.muellerlio.ictskillsissue.db.models.User" />
+        <mapping class="ch.muellerlio.ictskillsissue.db.models.Group" />
     </session-factory>
 </hibernate-configuration>
