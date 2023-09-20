@@ -1,5 +1,6 @@
 package ict.skills.ictskillslogin;
 
+import ict.skills.ictskillslogin.db.repositories.UserRepo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

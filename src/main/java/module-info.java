@@ -1,12 +1,17 @@
 module ict.skills.ictskillslogin {
     requires javafx.controls;
     requires javafx.fxml;
+
+    requires javafx.graphics;
+    requires java.base;
+    requires java.desktop;
     requires java.naming;
 
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
+//    db-stuff
+    requires mysql.connector.j;
+    requires static lombok;
+    requires org.hibernate.orm.core;
+    requires jakarta.persistence;
 
     opens ict.skills.ictskillslogin to javafx.fxml;
     exports ict.skills.ictskillslogin;
