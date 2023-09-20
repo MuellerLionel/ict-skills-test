@@ -64,8 +64,6 @@
             <scope>test</scope>
         </dependency>
 
-
-
 <!--        special stuff-->
         <dependency>
             <groupId>de.jensd</groupId>
