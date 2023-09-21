@@ -19,10 +19,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainMenuViewController implements Initializable {
     //Table
@@ -55,8 +52,13 @@ public class MainMenuViewController implements Initializable {
     private Label editErrorLabel;
     private Boolean itemSelected = false;
 
+
+    //error-handling
+    private Alert alert;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        alert = new Alert(Alert.AlertType.NONE);
         clearCurrentEdit();
         orderItemTableView.setEditable(false);
 
@@ -117,6 +119,19 @@ public class MainMenuViewController implements Initializable {
         editName.setText(selectedItem.getName());
         editPrice.setText(selectedItem.getPrice().toString());
         itemSelected = true;
+        alert.setAlertType(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("test" + index);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()){
+            System.out.println(result.get().getText());
+            if (result.get().getText().toLowerCase().equals("ok")){
+                System.out.println("confiremd");
+            }
+            else {
+                System.out.println("cancelled");
+            }
+        }
+
         setEditErrorMessage(null);
     }
     private void clearCurrentEdit(){
@@ -130,6 +145,9 @@ public class MainMenuViewController implements Initializable {
     protected void editSaveChanges(ActionEvent event) {
         if (!itemSelected){
             setEditErrorMessage("Error: No Item Selected");
+            alert.setContentText("Error: No Item Selected");
+            alert.setAlertType(Alert.AlertType.ERROR);
+            alert.show();
             return;
         }
         order.get(index.getValue()).setName(editName.getText());

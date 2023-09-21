@@ -7,11 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class LoginController {
@@ -24,6 +27,24 @@ public class LoginController {
 
     @FXML
     protected void onLoginSubmit(ActionEvent event) throws IOException {
+        try {
+            String input = loginPasswordField.getText();
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Convert the string to bytes
+            byte[] hashedBytes = digest.digest(input.getBytes());
+
+            // Convert the byte array to a hexadecimal string
+            String hashedString = bytesToHex(hashedBytes);
+
+            System.out.println("Original String: " + input);
+            System.out.println("SHA-256 Hash: " + hashedString);
+            System.out.println(hashedString.length());
+        } catch (NoSuchAlgorithmException e) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText(e.toString());
+            a.show();
+        }
         openMainView(event);
     }
     @FXML
@@ -36,5 +57,17 @@ public class LoginController {
         Scene scene = new Scene(fxmlView);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : bytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 }
