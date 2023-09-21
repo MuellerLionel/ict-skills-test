@@ -145,6 +145,14 @@ public class MainMenuViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    protected void onEnterDynamic(ActionEvent event) throws IOException {
+        Parent fxmlView = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("dynamic-view.fxml")));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlView);
+        stage.setScene(scene);
+        stage.show();
+    }
     private void setEditErrorMessage(String message) {
         if (message == null){
             editErrorLabel.setVisible(false);

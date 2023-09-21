@@ -30,7 +30,7 @@
                   <Font size="8.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Notiz">
+            <Button onAction="#onEnterDynamic" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Notiz">
                <graphic>
                   <MaterialIconView glyphName="EDIT" size="30" />
                </graphic>

@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -28,7 +30,7 @@
                   <Font size="8.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Notiz">
+            <Button onAction="#onEnterDynamic" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Notiz">
                <graphic>
                   <MaterialIconView glyphName="EDIT" size="30" />
                </graphic>
@@ -85,13 +87,13 @@
                   </Label>
                </top>
                <center>
-                  <TextField promptText="Namen" BorderPane.alignment="CENTER" fx:id="editName"/>
+                  <TextField fx:id="editName" promptText="Namen" BorderPane.alignment="CENTER" />
                </center>
                <left>
-                  <TextField prefHeight="26.0" prefWidth="35.0" promptText="Anzahl" BorderPane.alignment="CENTER" fx:id="editNumber"/>
+                  <TextField fx:id="editNumber" prefHeight="26.0" prefWidth="35.0" promptText="Anzahl" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <TextField prefHeight="26.0" prefWidth="47.0" promptText="Preis" BorderPane.alignment="CENTER" fx:id="editPrice"/>
+                  <TextField fx:id="editPrice" prefHeight="26.0" prefWidth="47.0" promptText="Preis" BorderPane.alignment="CENTER" />
                </right>
                <bottom>
                   <VBox alignment="CENTER" BorderPane.alignment="CENTER">
@@ -99,12 +101,12 @@
                         <Insets bottom="20.0" />
                      </BorderPane.margin>
                      <children>
-                        <Label alignment="CENTER" prefHeight="18.0" prefWidth="218.0" text="Error" fx:id="editErrorLabel">
+                        <Label fx:id="editErrorLabel" alignment="CENTER" prefHeight="18.0" prefWidth="218.0" text="Error">
                            <padding>
                               <Insets bottom="10.0" />
                            </padding>
                         </Label>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Speichern" onAction="#editSaveChanges">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#editSaveChanges" text="Speichern">
                            <graphic>
                               <MaterialIconView glyphName="BORDER_COLOR" size="20" />
                            </graphic>
@@ -213,20 +215,10 @@
       </ScrollPane>
       <AnchorPane layoutX="360.0" layoutY="211.0" minHeight="0.0" minWidth="0.0" prefHeight="189.0" prefWidth="240.0">
          <children>
-            <GridPane layoutY="1.0" prefHeight="189.0" prefWidth="240.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="98.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="102.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="102.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="102.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="102.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
+            <ImageView fitHeight="189.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../plog.png" />
+               </image></ImageView>
          </children>
       </AnchorPane>
    </children>
